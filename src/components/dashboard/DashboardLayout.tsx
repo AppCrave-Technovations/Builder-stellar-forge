@@ -69,7 +69,11 @@ export function DashboardLayout({
           <SidebarContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Dashboard">
+                <SidebarMenuButton
+                  tooltip="Dashboard"
+                  isActive={window.location.pathname === `/${userType}`}
+                  onClick={() => (window.location.href = `/${userType}`)}
+                >
                   <Home className="h-4 w-4" />
                   <span>Dashboard</span>
                 </SidebarMenuButton>
@@ -78,19 +82,43 @@ export function DashboardLayout({
               {userType === "system-admin" && (
                 <>
                   <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="User Management">
+                    <SidebarMenuButton
+                      tooltip="User Management"
+                      isActive={
+                        window.location.pathname === "/system-admin/users"
+                      }
+                      onClick={() =>
+                        (window.location.href = "/system-admin/users")
+                      }
+                    >
                       <User className="h-4 w-4" />
                       <span>User Management</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Recruiters">
+                    <SidebarMenuButton
+                      tooltip="Recruiters"
+                      isActive={
+                        window.location.pathname === "/system-admin/recruiters"
+                      }
+                      onClick={() =>
+                        (window.location.href = "/system-admin/recruiters")
+                      }
+                    >
                       <Users className="h-4 w-4" />
                       <span>Recruiters</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Clients">
+                    <SidebarMenuButton
+                      tooltip="Clients"
+                      isActive={
+                        window.location.pathname === "/system-admin/clients"
+                      }
+                      onClick={() =>
+                        (window.location.href = "/system-admin/clients")
+                      }
+                    >
                       <Briefcase className="h-4 w-4" />
                       <span>Clients</span>
                     </SidebarMenuButton>
@@ -99,7 +127,16 @@ export function DashboardLayout({
               )}
 
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Requirements">
+                <SidebarMenuButton
+                  tooltip="Requirements"
+                  isActive={
+                    window.location.pathname === `/system-admin/requirements` ||
+                    window.location.pathname === `/recruiter/requirements`
+                  }
+                  onClick={() =>
+                    (window.location.href = `/${userType === "system-admin" ? "system-admin/requirements" : "recruiter/requirements"}`)
+                  }
+                >
                   <FileText className="h-4 w-4" />
                   <span>Requirements</span>
                 </SidebarMenuButton>
@@ -107,7 +144,13 @@ export function DashboardLayout({
 
               {userType === "recruiter" && (
                 <SidebarMenuItem>
-                  <SidebarMenuButton tooltip="Rewards">
+                  <SidebarMenuButton
+                    tooltip="Rewards"
+                    isActive={window.location.pathname === "/recruiter/rewards"}
+                    onClick={() =>
+                      (window.location.href = "/recruiter/rewards")
+                    }
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
